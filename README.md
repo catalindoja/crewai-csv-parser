@@ -3,8 +3,3 @@
 ## Introduction
 
 This project is an example using the CrewAI framework to automate the process described in the title.
-
-
-## License
-
-This project is released under the MIT License.
