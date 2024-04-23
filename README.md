@@ -1,4 +1,4 @@
-# AI Crew for Reading a CSV file and doing the average of a column.
+# AI Crew for Reading a CSV file and doing operations with it.
 
 ## Introduction
 
