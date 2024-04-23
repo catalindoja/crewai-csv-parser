@@ -21,8 +21,8 @@ class CSVParserCrew:
         #analyze_data_agent = agents.csv_analyzer()
 
         parse_csv_task = tasks.parse_csv(csv_parser_agent, self.file_path)
-        summarize_data_task = tasks.summarize_csv(summarize_data_agent, parse_csv_task)
-        #analyze_data_task = tasks.analyze_csv(analyze_data_agent, parse_csv_task)
+        summarize_data_task = tasks.summarize_csv(summarize_data_agent)
+        #analyze_data_task = tasks.analyze_csv(analyze_data_agent)
 
         crew = Crew(
             agents=[
@@ -44,12 +44,8 @@ class CSVParserCrew:
 if __name__ == "__main__":
     print("## Welcome to CSV Parser Crew")
     print('-------------------------------')
-    file_path = input(
-        dedent("""
-            What is the path to the CSV file you want to parse?
-        """))
-    
-    csv_parser_crew = CSVParserCrew(file_path)
+    print("## Let's start the process")
+    csv_parser_crew = CSVParserCrew("./example.csv")
     result = csv_parser_crew.run()
     print("\n\n########################")
     print("## Here is the Report")

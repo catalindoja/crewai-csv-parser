@@ -13,8 +13,8 @@ class CSVParserAgents():
     def csv_parser(self):
         return Agent(
             role='CSV Parser',
-            goal="""Parse a CSV file and provide a summary of the data""",
-            backstory="""You are a data analyst with a lot of experience in parsing CSV files and summarizing data""",
+            goal="""Parse a CSV file and provide the data""",
+            backstory="""You are a data analyst with a lot of experience in parsing CSV files and providing the data in a concise manner""",
             verbose=True,
             tools=[
                 CSVParserTools.parse_csv
@@ -25,7 +25,7 @@ class CSVParserAgents():
     def csv_summarizer(self):
         return Agent(
             role='CSV Summarizer',
-            goal="""Summarize the data in a CSV file""",
+            goal="""Summarize the data in a CSV file and provide the summary of the data including the number of rows and columns, the data types of each column, and any other relevant information.""",
             backstory="""You are a data analyst with a lot of experience in summarizing data""",
             verbose=True,
             tools=[

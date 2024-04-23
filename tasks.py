@@ -8,25 +8,22 @@ class CSVParserTasks():
     def parse_csv(self, agent, file):
         return Task(description=dedent(f"""
             Parse the CSV file {file} and provide the concise data.
-            Your final answer must include the data but also, 
-            include the number of rows and columns, the data types
-            of each column, and any other relevant information.
-            Make sure to use the most recent data as possible.
+            {self.__tip_section()}
         """), agent=agent)
 
-    def summarize_csv(self, agent, file):
+    def summarize_csv(self, agent):
         return Task(description=dedent(f"""
-            Summarize the data in the CSV file {file}.
-            Your final answer must include a summary of the data.
-            Make sure to use the most recent data as possible.
+            Take the input from the parse_csv task and summarize the data.
+            Your final answer must include the number of rows and columns,
+            the data types of each column, and any other relevant information.
+            {self.__tip_section()}
         """), agent=agent)
 
-    def analyze_csv(self, agent, file):
+    def analyze_csv(self, agent):
         return Task(description=dedent(f"""
-            Analyze the data in the CSV file {file} and provide insights.
+            Analyze the data provided by the parse_csv task.
             Your final answer must include an analysis of the data
-            including any trends, outliers, mean, deviations, correlations, or other
-            patterns you observe in the data.
-            Make sure to use the most recent data as possible.
+            including how many names are in the data, the range of ages,
+            the average age of the people, and any other relevant information.
         """), agent=agent)
 
