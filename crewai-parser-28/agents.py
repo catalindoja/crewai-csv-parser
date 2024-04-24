@@ -79,9 +79,8 @@ class CSVParserAgents():
     def results_printer(self):
         return Agent(
             role='Results Printer',
-            goal="""Print the results of the previous agents. You will need to take the output from the count_males agent and the output from the count_females agent and 
-            print it in the format Line 1: Number of males, Line 2: Number of females.""",
-            backstory="""You are a data analyst with a lot of experience in printing results. You have enough memory to remember the results from the previous agents.""",
+            goal="""Print the results of the analysis. More explicitly, the number of males in one line and then the number of females in the next line.""",
+            backstory="""You are a data analyst with a lot of experience in printing results.""",
             allow_delegation=False,
             verbose=True,
             llm=self.llm
