@@ -1,6 +1,10 @@
 from crewai import Agent
 from langchain_openai import ChatOpenAI
 from tools.csv_parser_tools import CSVParserTools
+from crewai_tools import FileReadTool
+
+
+file_read_tool = FileReadTool(file_path='./titanic.csv')
 
 class CSVParserAgents():
     def __init__(self):
@@ -81,6 +85,36 @@ class CSVParserAgents():
             role='Results Printer',
             goal="""Print the results of the analysis. More explicitly, the number of males in one line and then the number of females in the next line.""",
             backstory="""You are a data analyst with a lot of experience in printing results.""",
+            allow_delegation=False,
+            verbose=True,
+            llm=self.llm
+        )
+
+    def people_counter(self):
+        return Agent(
+            role='People counter',
+            goal="""Count the number of people in the data and then return the result.""",
+            tools=[
+                #CSVParserTools.count_people_from_titanic
+                CSVParserTools.composed_tool
+            ],
+            backstory="""You are a data analyst with a lot of experience in counting people.""",
+            allow_delegation=False,
+            verbose=True,
+            llm=self.llm
+        )
+
+
+    def composed_agent(self):
+        return Agent(
+            role='Composed Agent',
+            goal="""Count the number of people in the data and then return the result.""",
+            tools=[
+                file_read_tool,
+                CSVParserTools.count_males_from_titanic,
+                CSVParserTools.count_females_from_titanic
+            ],
+            backstory="""You are a data analyst with a lot of experience in counting people.""",
             allow_delegation=False,
             verbose=True,
             llm=self.llm

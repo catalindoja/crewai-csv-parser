@@ -59,3 +59,25 @@ class CSVParserTasks():
                 Print the results in the format: first line print the number of males and in the second line print the number of females."""),
             agent=agent
         )
+
+    def count_people(self, agent, file_path):
+        return Task(
+            description=dedent(f"""
+                Count the number of people that are present in the data of the CSV file {file_path} and then print the result.
+                {self.__tip_section()}
+            """), 
+            expected_output=dedent("""\
+                The number of males is: NR_MALES and the number of females is: NR_FEMALES."""),
+            agent=agent
+        )
+
+    def composed_task(self, agent, file_path):
+        return Task(
+            description=dedent(f"""
+                Count the number of people that are present in the data of the CSV file {file_path} and then print the result.
+                {self.__tip_section()}
+            """), 
+            expected_output=dedent("""\
+                The number of males is: NR_MALES and the number of females is: NR_FEMALES."""),
+            agent=agent
+        )
